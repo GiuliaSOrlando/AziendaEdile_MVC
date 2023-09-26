@@ -1,0 +1,91 @@
+﻿@model IEnumerable<AziendaEdile_MVC.Models.Dipendente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create Employee", "CreateEmployee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodiceFiscale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coniugato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroFigli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mansione)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (AziendaEdile_MVC.Models.Dipendente dipendente in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => dipendente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => dipendente.Cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => dipendente.Indirizzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => dipendente.CodiceFiscale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => dipendente.Coniugato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => dipendente.NumeroFigli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => dipendente.Mansione)
+            </td>
+            <td>
+                @Html.ActionLink("Modifica", "EditEmployee", new { id = dipendente.ID }) |
+                @Html.ActionLink("Dettagli", "Details", new { id = dipendente.ID }) |
+                @Html.ActionLink("Elimina", "DeleteEmployee", new { id = dipendente.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h2>Pagamenti</h2>
+<table class="table">
+    <tr>
+        <th>ID Pagamento</th>
+        <th>ID Dipendente</th>
+        <th>Periodo di Pagamento</th>
+        <th>Ammontare</th>
+        <th>Tipo</th>
+    </tr>
+    @foreach (AziendaEdile_MVC.Models.Pagamento pagamento in AziendaEdile_MVC.Controllers.HomeController.listaPagamenti)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => pagamento.IdPagamento)</td>
+            <td>@Html.DisplayFor(modelItem => pagamento.IDDipendente)</td>
+            <td>@Html.DisplayFor(modelItem => pagamento.PeriodoPagamento)</td>
+            <td>@Html.DisplayFor(modelItem => pagamento.Ammontare)</td>
+            <td>@Html.DisplayFor(modelItem => pagamento.Tipo)</td>
+        </tr>
+    }
+</table>
